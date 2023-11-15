@@ -1,54 +1,50 @@
+from dataclasses import dataclass
+
+
+@dataclass
 class DomesticAnimal:
-    def __init__(self, name, type_of_animal):
-        self.name = name
-        self.type_of_animal = type_of_animal
+    _name: str
+    _type_of_animal: str
 
     def sound(self):
         pass
+
     def show(self):
-        print(f"Ім'я {self.name}")
-    def type(self):
-        pass
+        print(f'{self._name}')
+
+    def type_of_animal(self):
+        print(self._type_of_animal)
+
+
+@dataclass
 class Dog(DomesticAnimal):
     def sound(self):
-        print("Woof!")
+        print('Gav-Gav-Gav')
 
-    def show(self):
-        super().show()
 
-    def type(self):
-        print(f"Тип тварини {self.type_of_animal}")
-
+@dataclass
 class Cat(DomesticAnimal):
     def sound(self):
-        print("Meow!")
+        print('Miau-Miau')
 
-    def show(self):
-        super().show()
 
-    def type(self):
-        print(f"Тип тварини {self.type_of_animal}")
-
-class Parrot(DomesticAnimal):
+@dataclass
+class Perrot(DomesticAnimal):
     def sound(self):
-        print("Ку-ка-рі-ку")
+        print('Kria-Kria')
 
-    def show(self):
-        super().show()
 
-    def type(self):
-        print(f"Тип тварини {self.type_of_animal}")
-
+@dataclass
 class Hamster(DomesticAnimal):
     def sound(self):
-        print("звуки гризуна")
+        print('Nyam-Nyam')
 
-    def show(self):
-        super().show()
 
-    def type(self):
-        print(f"Тип тварини {self.type_of_animal}")
-dog = Dog("Rey", "dog")
+dog = Dog('Hatiko', 'Dog')
+cat = Cat('Matroskin', 'Cat')
+parrot = Cat('Kesha', 'Parrot')
+hamster = Hamster('Homyak', 'Hamster')
+
 dog.sound()
 dog.show()
-dog.type()
+dog.type_of_animal()
