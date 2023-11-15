@@ -1,50 +1,24 @@
-from dataclasses import dataclass
+"""Завдання 2
+Використовуючи механізм множинного успадкуван-
+ня, створіть клас «Автомобіль». Також мають бути класи:
+«Колеса», «Двигун», «Двері» та ін."""
+class Wheels:
+    def __init__(self, count):
+        self.count = count
 
+class Engine:
+    def __init__(self, power):
+        self.power = power
 
-@dataclass
-class DomesticAnimal:
-    _name: str
-    _type_of_animal: str
+class Doors:
+    def __init__(self, open = False):
+        self.open = open
 
-    def sound(self):
-        pass
+class Car(Wheels, Engine, Doors):
+    def __init__(self, count, power, open):
+        Wheels.__init__(self, count)
+        Engine.__init__(self, power)
+        Doors.__init__(self, open)
 
-    def show(self):
-        print(f'{self._name}')
-
-    def type_of_animal(self):
-        print(self._type_of_animal)
-
-
-@dataclass
-class Dog(DomesticAnimal):
-    def sound(self):
-        print('Gav-Gav-Gav')
-
-
-@dataclass
-class Cat(DomesticAnimal):
-    def sound(self):
-        print('Miau-Miau')
-
-
-@dataclass
-class Perrot(DomesticAnimal):
-    def sound(self):
-        print('Kria-Kria')
-
-
-@dataclass
-class Hamster(DomesticAnimal):
-    def sound(self):
-        print('Nyam-Nyam')
-
-
-dog = Dog('Hatiko', 'Dog')
-cat = Cat('Matroskin', 'Cat')
-parrot = Cat('Kesha', 'Parrot')
-hamster = Hamster('Homyak', 'Hamster')
-
-dog.sound()
-dog.show()
-dog.type_of_animal()
+car = Car(4, 150, True)
+print(car.__dict__)
