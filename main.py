@@ -10,9 +10,10 @@ class C(A):
     def say_hello(self):
         print("Hello from class C")
 class D(C, B):
-    pass
-obj1 = A()
-obj1.say_hello()
+    def say_hello(self):
+        super().say_hello()
+        A.say_hello(self)
+        
 obj = D()
 obj.say_hello()
 print(D.mro())
