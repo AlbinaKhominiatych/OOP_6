@@ -1,37 +1,54 @@
-"""В данном коде строка super(C, self).
-stop() используется для вызова метода stop из класса,
-от которого был унаследован класс C. В данном случае,
-класс C унаследован от класса A.
-Итак, строка super(C, self).stop():
-C - указывает, что мы ищем метод в иерархии наследования начиная с класса C.
-self - передает текущий экземпляр класса C в метод.
-Таким образом, super(C, self).stop() вызывает метод stop из класса,
-от которого унаследован класс C, который в данном случае - это класс A."""
-class A(object):
-    def go(self):
-        print("go A go!")
-    def stop(self):
-        print("stop A stop!")
-    def pause(self):
-        raise Exception("Not Implemented")
+class DomesticAnimal:
+    def __init__(self, name, type_of_animal):
+        self.name = name
+        self.type_of_animal = type_of_animal
 
-class B(A):
-    def go(self):
-        super(B, self).stop()
-        print("go B go!")
+    def sound(self):
+        pass
+    def show(self):
+        print(f"Ім'я {self.name}")
+    def type(self):
+        pass
+class Dog(DomesticAnimal):
+    def sound(self):
+        print("Woof!")
 
+    def show(self):
+        super().show()
 
-class C(A):
-    def go(self):
-        super(C, self).go()
-        print("go C go!")
-    def stop(self):
-        super(C, self).stop()
-        print("stop C stop!")
+    def type(self):
+        print(f"Тип тварини {self.type_of_animal}")
 
+class Cat(DomesticAnimal):
+    def sound(self):
+        print("Meow!")
 
-class E(B,C):
-    pass
+    def show(self):
+        super().show()
 
-e=E()
-e.go()
+    def type(self):
+        print(f"Тип тварини {self.type_of_animal}")
+
+class Parrot(DomesticAnimal):
+    def sound(self):
+        print("Ку-ка-рі-ку")
+
+    def show(self):
+        super().show()
+
+    def type(self):
+        print(f"Тип тварини {self.type_of_animal}")
+
+class Hamster(DomesticAnimal):
+    def sound(self):
+        print("звуки гризуна")
+
+    def show(self):
+        super().show()
+
+    def type(self):
+        print(f"Тип тварини {self.type_of_animal}")
+dog = Dog("Rey", "dog")
+dog.sound()
+dog.show()
+dog.type()
