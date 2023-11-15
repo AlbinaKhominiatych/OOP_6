@@ -6,10 +6,15 @@ class A:
     def __init__(self):
         print('a')
 
-class B(C):
+class B(A):
     def __init__(self):
-        C.__init__(self)
+        super().__init__()
         print('b')
 
 class D(B, A):
-    x = 'X'
+    def __init__(self):
+        super().__init__()
+        #A.__init__(self)
+        print('d')
+
+obj = D()
